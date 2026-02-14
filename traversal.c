@@ -83,3 +83,109 @@ bfs_traversal(Node* root){
     }
 
 }
+
+
+bfs_traversal_order_aware(Node* root){
+    if(root == NULL){
+        return;
+    }
+
+    std::queue<Node*> q;
+
+    q.push(root);
+
+    while(!q.empty()){
+        int cnt = q.size(); // # of nodes at each level 
+
+        // This makes the traversal level aware
+        // When cnt is 0 we have processed the level and could to some actions
+        while(cnt > 0){
+            auto curr = q.front();
+
+            q.pop();
+
+            std::cout<<curr->val<<std::endl;
+
+            if(curr->left){
+                q.push(curr->left);
+            }
+
+            if(curr->right){
+                q.push(curr->right);
+            }
+
+            cnt--;
+
+        }
+
+        std::cout<< std::endl; // eg. new line after each level
+    }
+}
+
+
+// Calculates height (max depth) of tree
+// Uses post-order traversal, passing information (height of node) from bottom to up
+int dfs_post(Node* root){
+    if(root == nullptr){
+        return 0;
+    }
+
+    int l = dfs_post(root->left);
+    int r = dfs_post(root->right;
+
+    return std::max(l,r) + 1;
+}
+
+// Calculates height (max depth) of tree
+// Uses pre-order traversal, passing information from top to bottom
+
+
+// int& - menas passing int type variable h by reference
+// Without the &, the function will create a local copy of h, 
+// and any updates inside the function won’t affect the original variable in main
+
+int dfs_pre(Node* root, int cnt, int& h){
+    // If reaches leaf node, assign to height the max of cnt(which is current level) and h(which is the height itself)
+    // Why max? Cuz there are many leaves, in each case it should compare already found height with its level
+    if(root == nullptr){
+        h = std::max(cnt, h);
+        return;
+    }
+
+    dfs_pre(root->left, cnt+1, h);
+    dfs_pre(root->right, cnt+1, h);
+
+}
+
+// Usage:
+// int h = 0;
+// dfs_pre(root, 0, h);
+
+
+// TASK: find the path of the tree, which has the biggest sum of nodes
+
+// Post-order variant
+int max_sum_path(Node* root){
+    if(root == nullptr){
+        return 0;
+    }
+
+    int l_max = max_sum_path(root->left);
+    int r_max = max_sum_path(root->right);
+
+    return std::max(l_max, r_max) + root->val;
+}
+
+// Pre-order variant
+int max_sum_path2(Node* root, int sum, int& max){
+    if(root == nullptr){
+        max = std::max(sum, max);
+        return 0;
+    }
+
+    max_sum_path2(root->left, sum + root->val, max);
+    max_sum_path2(root->right, sum + root->val, max);
+
+}
+
+
