@@ -1,4 +1,4 @@
-# AVL Tree Implementation in C
+# AVL Tree Implementation
 
 A complete, self-balancing binary search tree implementation in C that maintains O(log n) time complexity for insertions, deletions, and searches.
 
