@@ -27,8 +27,6 @@ For a valid AVL tree, the balance factor of every node must be -1, 0, or 1.
 - ✅ **No duplicates**: Prevents duplicate values
 - ✅ **Multiple traversals**: In-order, pre-order, and post-order with callback functions
 - ✅ **Memory-safe**: Proper cleanup with `free_tree()`
-- ✅ **Single file**: All implementation in one file for easy integration
-- ✅ **Lightweight**: Direct node manipulation without wrapper structures
 
 ## 📊 Data Structures
 
