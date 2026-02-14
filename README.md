@@ -374,8 +374,3 @@ typedef struct Node {
 // Example: if (compare(val, node->data) < 0)
 ```
 
----
-
-**License**: Public Domain  
-**Author**: vanyan12  
-**Repository**: https://github.com/vanyan12/DataStructures-
